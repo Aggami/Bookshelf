@@ -14,11 +14,14 @@
 		086838C624AA607200DD61CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086838C524AA607200DD61CE /* Assets.xcassets */; };
 		086838C924AA607200DD61CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086838C724AA607200DD61CE /* LaunchScreen.storyboard */; };
 		086838D124ABB05400DD61CE /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086838D024ABB05400DD61CE /* BooksTableViewController.swift */; };
+		08E0466A24AF4F22000AAC0D /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E0466924AF4F22000AAC0D /* Note.swift */; };
 		08FD346324AC8B3E005EF0F0 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD346224AC8B3E005EF0F0 /* Book.swift */; };
 		08FD346624AC9A86005EF0F0 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD346424AC9A86005EF0F0 /* BookTableViewCell.swift */; };
 		08FD346724AC9A86005EF0F0 /* BookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FD346524AC9A86005EF0F0 /* BookTableViewCell.xib */; };
 		08FD346C24AC9FD9005EF0F0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD346B24AC9FD9005EF0F0 /* DetailViewController.swift */; };
 		08FD346E24ACAE13005EF0F0 /* AddBookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD346D24ACAE13005EF0F0 /* AddBookTableViewController.swift */; };
+		08FD349224AE4D19005EF0F0 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD349124AE4D19005EF0F0 /* NoteTableViewCell.swift */; };
+		08FD349424AE5EFA005EF0F0 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD349324AE5EFA005EF0F0 /* NoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +34,14 @@
 		086838C824AA607200DD61CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		086838CA24AA607200DD61CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		086838D024ABB05400DD61CE /* BooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
+		08E0466924AF4F22000AAC0D /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		08FD346224AC8B3E005EF0F0 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		08FD346424AC9A86005EF0F0 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		08FD346524AC9A86005EF0F0 /* BookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookTableViewCell.xib; sourceTree = "<group>"; };
 		08FD346B24AC9FD9005EF0F0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = BookShelf/Controller/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		08FD346D24ACAE13005EF0F0 /* AddBookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookTableViewController.swift; sourceTree = "<group>"; };
+		08FD349124AE4D19005EF0F0 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		08FD349324AE5EFA005EF0F0 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 			children = (
 				086838C224AA606F00DD61CE /* BookShelf.xcdatamodeld */,
 				08FD346224AC8B3E005EF0F0 /* Book.swift */,
+				08E0466924AF4F22000AAC0D /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +112,8 @@
 				08FD346D24ACAE13005EF0F0 /* AddBookTableViewController.swift */,
 				08FD346424AC9A86005EF0F0 /* BookTableViewCell.swift */,
 				08FD346B24AC9FD9005EF0F0 /* DetailViewController.swift */,
+				08FD349324AE5EFA005EF0F0 /* NoteViewController.swift */,
+				08FD349124AE4D19005EF0F0 /* NoteTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,8 +195,11 @@
 				08FD346324AC8B3E005EF0F0 /* Book.swift in Sources */,
 				086838BA24AA606F00DD61CE /* AppDelegate.swift in Sources */,
 				086838BC24AA606F00DD61CE /* SceneDelegate.swift in Sources */,
+				08FD349224AE4D19005EF0F0 /* NoteTableViewCell.swift in Sources */,
 				08FD346624AC9A86005EF0F0 /* BookTableViewCell.swift in Sources */,
+				08E0466A24AF4F22000AAC0D /* Note.swift in Sources */,
 				086838C424AA606F00DD61CE /* BookShelf.xcdatamodeld in Sources */,
+				08FD349424AE5EFA005EF0F0 /* NoteViewController.swift in Sources */,
 				08FD346C24AC9FD9005EF0F0 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,23 +23,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-gP-5aW">
                                 <rect key="frame" x="5" y="5" width="261" height="150"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="2pK-vU-hFc">
-                                        <rect key="frame" x="0.0" y="39.5" width="137" height="71"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="2pK-vU-hFc">
+                                        <rect key="frame" x="0.0" y="38.5" width="137" height="73.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTb-is-FlM">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="137" height="23"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <color key="textColor" name="MainColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAd-Hf-1o7">
-                                                <rect key="frame" x="0.0" y="34.5" width="42" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="37" width="137" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="TextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dd5-Ld-c23">
-                                                <rect key="frame" x="0.0" y="69" width="128" height="2"/>
+                                                <rect key="frame" x="0.0" y="71.5" width="137" height="2"/>
+                                                <color key="tintColor" name="AccentImpRed"/>
                                             </progressView>
                                         </subviews>
                                     </stackView>
@@ -52,9 +54,11 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" name="LightColor"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="LightColorCard"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
                         <constraints>
                             <constraint firstItem="tOe-gP-5aW" firstAttribute="top" secondItem="yEv-Ub-Xuo" secondAttribute="top" constant="5" id="FQN-tM-9AC"/>
                             <constraint firstAttribute="trailing" secondItem="tOe-gP-5aW" secondAttribute="trailing" constant="5" id="Hog-JY-ta2"/>
@@ -64,7 +68,7 @@
                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                     </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" name="MainColor"/>
                 <constraints>
                     <constraint firstItem="yEv-Ub-Xuo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="6pv-zB-jad"/>
                     <constraint firstItem="yEv-Ub-Xuo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="D93-eV-7jr"/>
@@ -83,4 +87,21 @@
             <point key="canvasLocation" x="67.391304347826093" y="83.705357142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="AccentImpRed">
+            <color red="0.90196078431372551" green="0.22352941176470589" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightColor">
+            <color red="0.94509803921568625" green="0.98039215686274506" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightColorCard">
+            <color red="0.94509803921568625" green="0.98039215686274506" blue="0.93333333333333335" alpha="0.75599998235702515" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainColor">
+            <color red="0.27058823529411763" green="0.4823529411764706" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextColor">
+            <color red="0.11372549019607843" green="0.20784313725490197" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

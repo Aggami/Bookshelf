@@ -12,11 +12,11 @@ class BooksTableViewController: UITableViewController {
 
     
     var books = [
-        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", notes: "Great book....", maxPages: 350, shelf: "Read", pagesRead: 350),
-        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", notes: "Great book....", maxPages: 350, shelf: "Read", pagesRead: 350),
-        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", notes: "Great book....", maxPages: 350, shelf: "Read", pagesRead: 350),
-        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", notes: "Great book....", maxPages: 350, shelf: "Read", pagesRead: 350),
-        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", notes: "Great book....", maxPages: 350, shelf: "Read", pagesRead: 350)
+        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", maxPages: 350, shelf: "Read", pagesRead: 200),
+        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", maxPages: 350, shelf: "Read", pagesRead: 30),
+        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", maxPages: 350, shelf: "Read", pagesRead: 100),
+        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", maxPages: 350, shelf: "Read", pagesRead: 350),
+        Book(title: "Duma i uprzedzenie", author: "Jane Austen", ISBN: "12313124", maxPages: 350, shelf: "Read", pagesRead: 0)
     ]
     
     var selectedBook:Book?
@@ -24,6 +24,11 @@ class BooksTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        
+        for i in 0..<books.count {
+            books[i].addNote(note: Note(category: Category.note, text: "Mr Darcy lived in Pemberley"))
+            books[i].addNote(note: Note(category: Category.quote, text: "It is a truth universally acknowledged that a ...."))
+        }
         
         tableView.register(UINib(nibName: "BookTableViewCell", bundle: nil), forCellReuseIdentifier: "BookCell")
         // Uncomment the following line to preserve selection between presentations

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController  {
+
+    var noteSelected:Note?
 
     var book:Book?
     
@@ -31,18 +33,52 @@ class DetailViewController: UIViewController {
             progressSlider.value = Float(currBook.pagesRead)
             coverImage.image = UIImage(named: "PrideAndPrejudice")
         }
-        // Do any additional setup after loading the view.
+        
+        notes.delegate = self
+        notes.dataSource = self
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "DetailToNote"){
+            
+            let dest = segue.destination as! NoteViewController
+            dest.note = noteSelected
+        }
+    }
+    
+    @IBAction func addNotePressed(_ sender: Any) {
+        noteSelected = nil
+        performSegue(withIdentifier: "DetailToNote", sender: self)
+
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return book?.notes.count ?? 0
     }
-    */
-
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell") as! NoteTableViewCell
+        cell.categoryText.text = book!.notes[indexPath.row].category.description()
+        cell.circleImage.tintColor = UIColor(named: book!.notes[indexPath.row].category.categoryColorName())
+        cell.noteText.text = book!.notes[indexPath.row].text
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        noteSelected = book!.notes[indexPath.row]
+        performSegue(withIdentifier: "DetailToNote", sender: self)
+    }
+    
 }

@@ -14,8 +14,17 @@ struct Book {
     let ISBN:String
     
     
-    let notes:String
     let maxPages:Int
     let shelf:String
     var pagesRead:Int
+    
+    var notes:[Note]=[]
+    
+    mutating func addNote(note: Note){
+        notes.append(note)
+    }
+    
+    mutating func updatePagesRead(newPagesRead: Int){
+        pagesRead = newPagesRead
+    }
 }

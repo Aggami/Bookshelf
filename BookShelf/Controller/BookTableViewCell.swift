@@ -18,7 +18,7 @@ class BookTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        cardView.layer.cornerRadius = 5
+        cardView.layer.cornerRadius = 15
         cardView.layer.masksToBounds = false
         cardView.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 0.2)
         // Initialization code
