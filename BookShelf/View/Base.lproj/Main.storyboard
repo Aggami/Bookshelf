@@ -337,9 +337,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSH-Do-Vzv">
                                         <rect key="frame" x="0.0" y="256" width="398" height="75"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XwN-Gc-15B">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="XwN-Gc-15B">
                                                 <rect key="frame" x="6" y="8" width="386" height="60"/>
                                                 <color key="tintColor" name="AccentImpRed"/>
+                                                <connections>
+                                                    <action selector="pagesReadEndEditing:" destination="H0S-JA-rYH" eventType="editingDidEnd" id="m7V-UY-X7H"/>
+                                                    <action selector="pagesReadValueChanged:" destination="H0S-JA-rYH" eventType="valueChanged" id="6wH-zB-4ed"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hP-c0-ObL">
                                                 <rect key="frame" x="8" y="68" width="10.5" height="20.5"/>
@@ -473,8 +477,10 @@
                         <outlet property="coverImage" destination="0Cy-C4-9rQ" id="ZSt-6v-a19"/>
                         <outlet property="descriptionLabel" destination="DbP-cl-08A" id="od8-WZ-FEk"/>
                         <outlet property="notes" destination="WyM-Kv-fOy" id="mkb-eo-YxX"/>
+                        <outlet property="pagesReadLabel" destination="WWa-3u-JHw" id="ddU-gn-bLU"/>
                         <outlet property="progressSlider" destination="XwN-Gc-15B" id="9de-Ja-530"/>
                         <outlet property="titleLabel" destination="g7H-6x-HiK" id="S7L-OC-J7S"/>
+                        <outlet property="totalPagesLabel" destination="2L3-7a-7IV" id="I4g-Dw-IS8"/>
                         <segue destination="Dv0-fP-PZD" kind="presentation" identifier="DetailToNote" id="THs-25-Qv2"/>
                     </connections>
                 </viewController>
@@ -506,16 +512,18 @@
                                             <constraint firstAttribute="height" constant="170" id="oBS-jG-McR"/>
                                         </constraints>
                                     </pickerView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hn-75-MDD">
-                                        <rect key="frame" x="0.0" y="185" width="374" height="350"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yup-NH-Mlq">
+                                        <rect key="frame" x="0.0" y="185" width="374" height="472"/>
+                                        <color key="backgroundColor" name="LightColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="350" id="DLM-M1-NrS"/>
+                                            <constraint firstAttribute="height" constant="350" id="pwh-Hr-VBk"/>
                                         </constraints>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eI-1n-wRb">
-                                        <rect key="frame" x="0.0" y="550" width="374" height="198"/>
+                                        <rect key="frame" x="0.0" y="672" width="374" height="76"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="savePressed:" destination="Dv0-fP-PZD" eventType="touchUpInside" id="gyB-UF-BcZ"/>
@@ -536,7 +544,7 @@
                     <connections>
                         <outlet property="categoryLabel" destination="p9a-Ho-Mby" id="ncK-Co-b2t"/>
                         <outlet property="categoryPicker" destination="Gpo-s5-PNd" id="HDY-gR-bdB"/>
-                        <outlet property="noteText" destination="5hn-75-MDD" id="Xhb-2z-ptc"/>
+                        <outlet property="noteText" destination="Yup-NH-Mlq" id="L2k-bh-6aC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZa-kc-htF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -569,7 +577,7 @@
                     <navigationItem key="navigationItem" title="BookShelf" id="QKA-dv-LPn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hel-1x-vx0">
                             <connections>
-                                <segue destination="Y3M-TY-BzY" kind="presentation" id="gx3-y5-Bwb"/>
+                                <segue destination="Y3M-TY-BzY" kind="presentation" identifier="TableToAdd" id="gx3-y5-Bwb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

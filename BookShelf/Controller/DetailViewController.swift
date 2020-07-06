@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import RealmSwift
 
-class DetailViewController: UIViewController  {
+class DetailViewController: UIViewController, NoteDelegate  {
+    func noteEdited() {
+        loadNotes()
+    }
+    
+    func addNote(note: Note) {
+        try! realm.write{
+            print("Dodawanie notatki")
+            book?.addNote(note: note)
+        }
+        loadNotes()
+    }
+    
 
     var noteSelected:Note?
 
     var book:Book?
+    
+    let realm = try! Realm()
+
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -20,6 +36,8 @@ class DetailViewController: UIViewController  {
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var progressSlider: UISlider!
     @IBOutlet weak var notes: UITableView!
+    @IBOutlet weak var totalPagesLabel: UILabel!
+    @IBOutlet weak var pagesReadLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +50,24 @@ class DetailViewController: UIViewController  {
             progressSlider.maximumValue = Float(currBook.maxPages)
             progressSlider.value = Float(currBook.pagesRead)
             coverImage.image = UIImage(named: "PrideAndPrejudice")
+            pagesReadLabel.text = String(currBook.pagesRead)
+            totalPagesLabel.text = String(currBook.maxPages)
         }
         
         notes.delegate = self
         notes.dataSource = self
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        print("GOT HERE")
+
+        try! realm.write(){
+            print("Changed pages")
+            book?.pagesRead = Int(progressSlider.value)
+        }
     }
     
     
@@ -45,6 +76,7 @@ class DetailViewController: UIViewController  {
             
             let dest = segue.destination as! NoteViewController
             dest.note = noteSelected
+            dest.noteDelegate = self
         }
     }
     
@@ -54,7 +86,13 @@ class DetailViewController: UIViewController  {
 
     }
     
-
+    @IBAction func pagesReadValueChanged(_ sender: UISlider) {
+        pagesReadLabel.text = String(Int(progressSlider.value))
+    }
+    
+   
+    
+    
 }
 
 
@@ -81,4 +119,14 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "DetailToNote", sender: self)
     }
     
+    func loadNotes(){
+        notes.reloadData()
+    }
+    
+    
+}
+
+protocol NoteDelegate {
+    func addNote(note: Note)
+    func noteEdited()
 }

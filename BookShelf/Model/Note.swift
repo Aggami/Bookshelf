@@ -7,11 +7,22 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-struct Note {
-    let category:Category
-    let text:String
+class Note : Object {
+    @objc dynamic var categoryNum:Int = 0
+    
+    var category:Category {
+        get {
+            return Category(rawValue: categoryNum)!
+        }
+        set {
+            categoryNum = newValue.rawValue
+        }
+    }
+    @objc dynamic var text:String = ""
+    
+    var parentBook = LinkingObjects(fromType: Book.self, property: "notes")
 }
 
 enum Category : Int {

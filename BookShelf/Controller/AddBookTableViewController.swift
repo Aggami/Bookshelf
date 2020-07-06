@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddBookTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    let realm = try! Realm()
+    
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var authorField: UITextField!
@@ -18,12 +21,12 @@ class AddBookTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var totalPagesField: UITextField!
     @IBOutlet weak var bookCover: UIImageView!
     
+    var parentController: BooksTableViewController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         titleField.delegate = self
         authorField.delegate = self
         isbnField.delegate = self
@@ -105,12 +108,25 @@ class AddBookTableViewController: UITableViewController, UIImagePickerController
         let isbn = isbnField.text
         let pagesRead = Int(pagesReadField.text ?? "0")
         let totalPages = Int(totalPagesField.text ?? "0")
+        
+        let book = Book()
+        book.title = title ?? "No title"
+        book.author = author ?? "Author unknown"
+        book.ISBN = isbn ?? ""
+        book.pagesRead = pagesRead ?? 0
+        book.maxPages = totalPages ?? 300
         //let score = Int(scoreLabel.text ?? "5")
         
+        try! realm.write(){
+            realm.add(book)
+        }
         
-        let book = Book(title: title ?? "", author: author ?? "", ISBN: isbn ?? "", maxPages: totalPages ?? 300, shelf: "toRead", pagesRead: pagesRead ?? 0)
-        print(book.title)
-        dismiss(animated: true, completion: nil)
+        //let book = Book(title: title ?? "", author: author ?? "", ISBN: isbn ?? "", maxPages: totalPages ?? 300, shelf: "toRead", pagesRead: pagesRead ?? 0)
+        //print(book.title)
+        
+        dismiss(animated: true) {
+              NotificationCenter.default.post(name: NSNotification.Name(rawValue: "modalIsDimissed"), object: nil)
+        }
     }
     
     

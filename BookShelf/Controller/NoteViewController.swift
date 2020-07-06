@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NoteViewController: UIViewController {
     
     var note:Note?
+    var noteDelegate:NoteDelegate?
+    let realm = try! Realm()
+
     
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var noteText: UITextField!
+    @IBOutlet weak var noteText: UITextView!
     @IBOutlet weak var categoryPicker: UIPickerView!
     
     override func viewDidLoad() {
@@ -47,13 +51,31 @@ class NoteViewController: UIViewController {
         if !categoryPicker.isHidden {
             //dodawanie notatki
             if let text = noteText.text{
-                let note = Note(category: Category(rawValue: categoryPicker.selectedRow(inComponent: 0)) ?? Category.note, text: text)
-                print("Dodano notkę o kategorii \(note.category.description()) i tekscie \(note.text)" )
+                let note = Note()
+                note.category = Category(rawValue: categoryPicker.selectedRow(inComponent: 0)) ?? Category.note
+                note.text = text
+                if let delegate = noteDelegate {
+                    delegate.addNote(note: note)
+                }
             }
             
         }
         else{
             //edycja notatki
+            if let safeNote = note {
+                if let text = noteText.text {
+                    if (safeNote.text != text){
+                        try! realm.write {
+                            safeNote.text = text
+                        }
+                        if let delegate = noteDelegate{
+                            delegate.noteEdited()
+                        }
+                    }
+                }
+                
+            }
+            
         }
         
         
@@ -80,7 +102,7 @@ extension NoteViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     
 }
 
-extension NoteViewController : UITextFieldDelegate {
+extension NoteViewController : UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

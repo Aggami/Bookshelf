@@ -8,23 +8,36 @@
 
 import Foundation
 
-struct Book {
-    let title:String
-    let author:String
-    let ISBN:String
+import RealmSwift
+
+class Book : Object {
+    @objc dynamic var title:String = ""
+    @objc dynamic var author:String = ""
+    @objc dynamic var ISBN:String?
+    @objc dynamic var maxPages:Int = 350
     
+    var shelf:String {
+        switch pagesRead {
+        case 0:
+            return "ToRead"
+        case 1..<maxPages:
+            return "InProgress"
+        case maxPages:
+            return "Finished"
+        default:
+            return "ToRead"
+        }
+        
+    }
+    @objc dynamic var pagesRead:Int = 0
     
-    let maxPages:Int
-    let shelf:String
-    var pagesRead:Int
+    let notes = List<Note>()
     
-    var notes:[Note]=[]
-    
-    mutating func addNote(note: Note){
+    func addNote(note: Note){
         notes.append(note)
     }
     
-    mutating func updatePagesRead(newPagesRead: Int){
+    func updatePagesRead(newPagesRead: Int){
         pagesRead = newPagesRead
     }
 }
