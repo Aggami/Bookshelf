@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -18,39 +18,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEv-Ub-Xuo">
-                        <rect key="frame" x="19" y="14" width="271" height="160"/>
+                        <rect key="frame" x="19" y="14" width="271" height="152"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-gP-5aW">
-                                <rect key="frame" x="5" y="5" width="261" height="150"/>
+                                <rect key="frame" x="10" y="5" width="251" height="142"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="2pK-vU-hFc">
-                                        <rect key="frame" x="0.0" y="38.5" width="137" height="73.5"/>
+                                        <rect key="frame" x="0.0" y="34.5" width="142" height="73.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTb-is-FlM">
-                                                <rect key="frame" x="0.0" y="0.0" width="137" height="23"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="142" height="23"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <color key="textColor" name="MainColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAd-Hf-1o7">
-                                                <rect key="frame" x="0.0" y="37" width="137" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="37" width="142" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="TextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dd5-Ld-c23">
-                                                <rect key="frame" x="0.0" y="71.5" width="137" height="2"/>
+                                                <rect key="frame" x="0.0" y="71.5" width="142" height="2"/>
                                                 <color key="tintColor" name="AccentImpRed"/>
                                             </progressView>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IHQ-vB-dJ1">
-                                        <rect key="frame" x="161" y="0.0" width="100" height="150"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IHQ-vB-dJ1">
+                                        <rect key="frame" x="166" y="6" width="85" height="130"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="0bC-Qq-Egb"/>
-                                            <constraint firstAttribute="width" constant="100" id="KXM-Da-s00"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Kvy-qp-C7N"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="WIe-13-ZT1"/>
+                                            <constraint firstAttribute="height" constant="130" id="0bC-Qq-Egb"/>
+                                            <constraint firstAttribute="width" constant="85" id="KXM-Da-s00"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -61,14 +59,14 @@
                         <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
                         <constraints>
                             <constraint firstItem="tOe-gP-5aW" firstAttribute="top" secondItem="yEv-Ub-Xuo" secondAttribute="top" constant="5" id="FQN-tM-9AC"/>
-                            <constraint firstAttribute="trailing" secondItem="tOe-gP-5aW" secondAttribute="trailing" constant="5" id="Hog-JY-ta2"/>
+                            <constraint firstAttribute="trailing" secondItem="tOe-gP-5aW" secondAttribute="trailing" constant="10" id="Hog-JY-ta2"/>
                             <constraint firstAttribute="bottom" secondItem="tOe-gP-5aW" secondAttribute="bottom" constant="5" id="QIj-Q8-aoZ"/>
-                            <constraint firstItem="tOe-gP-5aW" firstAttribute="leading" secondItem="yEv-Ub-Xuo" secondAttribute="leading" constant="5" id="Uj3-T3-Btr"/>
+                            <constraint firstItem="tOe-gP-5aW" firstAttribute="leading" secondItem="yEv-Ub-Xuo" secondAttribute="leading" constant="10" id="Uj3-T3-Btr"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="MainColor"/>
+                <color key="backgroundColor" name="Background"/>
                 <constraints>
                     <constraint firstItem="yEv-Ub-Xuo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="6pv-zB-jad"/>
                     <constraint firstItem="yEv-Ub-Xuo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="D93-eV-7jr"/>
@@ -76,6 +74,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="yEv-Ub-Xuo" secondAttribute="bottom" constant="3" id="gp3-Hb-89n"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="Background"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorLabel" destination="zAd-Hf-1o7" id="zkm-Dv-4X6"/>
@@ -90,6 +89,9 @@
     <resources>
         <namedColor name="AccentImpRed">
             <color red="0.90196078431372551" green="0.22352941176470589" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Background">
+            <color red="0.6588235294117647" green="0.85490196078431369" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightColor">
             <color red="0.94509803921568625" green="0.98039215686274506" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

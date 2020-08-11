@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LDo-GT-VU5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LDo-GT-VU5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -513,7 +513,7 @@
                                         </constraints>
                                     </pickerView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yup-NH-Mlq">
-                                        <rect key="frame" x="0.0" y="185" width="374" height="472"/>
+                                        <rect key="frame" x="0.0" y="185" width="374" height="458"/>
                                         <color key="backgroundColor" name="LightColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="350" id="pwh-Hr-VBk"/>
@@ -523,8 +523,12 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eI-1n-wRb">
-                                        <rect key="frame" x="0.0" y="672" width="374" height="76"/>
-                                        <state key="normal" title="Save"/>
+                                        <rect key="frame" x="0.0" y="658" width="374" height="90"/>
+                                        <color key="backgroundColor" name="Background"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" name="TextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="savePressed:" destination="Dv0-fP-PZD" eventType="touchUpInside" id="gyB-UF-BcZ"/>
                                         </connections>
@@ -558,7 +562,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CTF-kx-X8y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="Background"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" rowHeight="121" id="S8n-YX-Vlj" customClass="BookTableViewCell" customModule="BookShelf" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="121"/>
@@ -574,7 +578,7 @@
                             <outlet property="delegate" destination="kaG-Ff-ycV" id="6l5-rb-cH5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="BookShelf" id="QKA-dv-LPn">
+                    <navigationItem key="navigationItem" title="BookShelf" largeTitleDisplayMode="always" id="QKA-dv-LPn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hel-1x-vx0">
                             <connections>
                                 <segue destination="Y3M-TY-BzY" kind="presentation" identifier="TableToAdd" id="gx3-y5-Bwb"/>
@@ -594,11 +598,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LDo-GT-VU5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Axk-ar-ILQ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Axk-ar-ILQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="Background"/>
                         <color key="tintColor" name="AccentImpRed"/>
-                        <color key="barTintColor" name="LightColor"/>
+                        <color key="barTintColor" name="Background"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="TextColor"/>
                         </textAttributes>

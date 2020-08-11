@@ -46,8 +46,6 @@ class NoteViewController: UIViewController {
     
     @IBAction func savePressed(_ sender: UIButton) {
        
-        print("Im here")
-        
         if !categoryPicker.isHidden {
             //dodawanie notatki
             if let text = noteText.text{

@@ -12,9 +12,14 @@ import RealmSwift
 class BooksTableViewController: UITableViewController {
 
     let realm = try! Realm()
+    
     var books:Results<Book>?
     
     var selectedBook:Book?
+    
+    var documentsUrl: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
     
     override func viewWillAppear(_ animated: Bool){
        reloadData()
@@ -25,9 +30,7 @@ class BooksTableViewController: UITableViewController {
         
         
         tableView.dataSource = self
-
         tableView.register(UINib(nibName: "BookTableViewCell", bundle: nil), forCellReuseIdentifier: "BookCell")
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(BooksTableViewController.reloadData), name: NSNotification.Name(rawValue: "modalIsDimissed"), object: nil)
     }
@@ -51,7 +54,7 @@ class BooksTableViewController: UITableViewController {
         if let book = books?[indexPath.row] {
             cell.titleLabel.text = book.title
             cell.authorLabel.text = book.author
-            cell.coverImage.image = UIImage(named: "PrideAndPrejudice")
+            cell.coverImage.image = book.getImage()
             cell.progressBat.progress = Float(book.pagesRead)/Float(book.maxPages)
         }
         
@@ -71,18 +74,12 @@ class BooksTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableToDetail" {
             let destinationVC = segue.destination as! DetailViewController
             destinationVC.book = selectedBook
             
         }
-//        if segue.identifier == "TableToAdd" {
-//            let destinationVC = segue.destination as! AddBookTableViewController
-//            destinationVC.parentController = self
-//        }
     }
     
     @objc func reloadData() {
@@ -92,5 +89,3 @@ class BooksTableViewController: UITableViewController {
     
 
 }
-
-

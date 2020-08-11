@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AddBookTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddBookTableViewController: UITableViewController, UINavigationControllerDelegate {
 
     let realm = try! Realm()
     
@@ -32,9 +32,89 @@ class AddBookTableViewController: UITableViewController, UIImagePickerController
         isbnField.delegate = self
         pagesReadField.delegate = self
         totalPagesField.delegate = self
-
-        // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        
+        let title = titleField.text
+        let author = authorField.text
+        let isbn = isbnField.text
+        let pagesRead = Int(pagesReadField.text ?? "0")
+        let totalPages = Int(totalPagesField.text ?? "0")
+        
+        
+        
+        let book = Book()
+        book.title = title ?? "No title"
+        book.author = author ?? "Author unknown"
+        book.ISBN = isbn ?? ""
+        book.pagesRead = pagesRead ?? 0
+        book.maxPages = totalPages ?? 300
+        
+        if let image = bookCover.image {
+            book.imagePath = book.title.replacingOccurrences(of: " ", with: "+")
+            let result = saveImage(image: image, name: book.imagePath!)
+            if (!result) {
+                print("Problem z zapisem obrazu")
+            }
+
+        }
+                
+        try! realm.write(){
+            realm.add(book)
+        }
+        
+        dismiss(animated: true) {
+              NotificationCenter.default.post(name: NSNotification.Name(rawValue: "modalIsDimissed"), object: nil)
+        }
+    }
+    
+    
+    
+    func saveImage(image: UIImage, name: String) -> Bool {
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+            return false
+        }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return false
+        }
+        do {
+            try data.write(to: directory.appendingPathComponent(name)!)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+    }
+        
+    
+    @IBAction func closePressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func onScoreChanged(_ sender: UISlider) {
+        scoreLabel.text = String(Int(sender.value))
+    }
+    
+    
+}
+
+
+extension AddBookTableViewController : UITextFieldDelegate{
+    
+    private func textFieldShouldReturn(_ textField: UITextField) {
+        textField.resignFirstResponder()
+
+        if let nextTextField = view.viewWithTag(textField.tag + 1)
+        {
+            nextTextField.becomeFirstResponder()
+        }
+        
+    }
+}
+
+extension AddBookTableViewController : UIImagePickerControllerDelegate{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -48,21 +128,9 @@ class AddBookTableViewController: UITableViewController, UIImagePickerController
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-     
-    */
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //wybieranie obrazka
         if indexPath.row == 0 {
 
             let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
@@ -96,61 +164,5 @@ class AddBookTableViewController: UITableViewController, UIImagePickerController
             present(photoSourceRequestController, animated: true, completion: nil) }
         
     }
-    
-    
-    
-    
-    
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        
-        let title = titleField.text
-        let author = authorField.text
-        let isbn = isbnField.text
-        let pagesRead = Int(pagesReadField.text ?? "0")
-        let totalPages = Int(totalPagesField.text ?? "0")
-        
-        let book = Book()
-        book.title = title ?? "No title"
-        book.author = author ?? "Author unknown"
-        book.ISBN = isbn ?? ""
-        book.pagesRead = pagesRead ?? 0
-        book.maxPages = totalPages ?? 300
-        //let score = Int(scoreLabel.text ?? "5")
-        
-        try! realm.write(){
-            realm.add(book)
-        }
-        
-        //let book = Book(title: title ?? "", author: author ?? "", ISBN: isbn ?? "", maxPages: totalPages ?? 300, shelf: "toRead", pagesRead: pagesRead ?? 0)
-        //print(book.title)
-        
-        dismiss(animated: true) {
-              NotificationCenter.default.post(name: NSNotification.Name(rawValue: "modalIsDimissed"), object: nil)
-        }
-    }
-    
-    
-    
-    @IBAction func closePressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-
-
-    @IBAction func onScoreChanged(_ sender: UISlider) {
-        scoreLabel.text = String(Int(sender.value))
-    }
 }
 
-extension AddBookTableViewController : UITextFieldDelegate{
-    
-    private func textFieldShouldReturn(_ textField: UITextField) {
-        textField.resignFirstResponder()
-
-        if let nextTextField = view.viewWithTag(textField.tag + 1)
-        {
-            nextTextField.becomeFirstResponder()
-        }
-        
-    }
-}

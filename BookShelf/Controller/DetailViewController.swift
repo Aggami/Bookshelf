@@ -45,11 +45,11 @@ class DetailViewController: UIViewController, NoteDelegate  {
         if let currBook = book {
             titleLabel.text = currBook.title
             authorLabel.text = currBook.author
-            descriptionLabel.text = "?/"
+            descriptionLabel.text = ""
             progressSlider.minimumValue = 0.0
             progressSlider.maximumValue = Float(currBook.maxPages)
             progressSlider.value = Float(currBook.pagesRead)
-            coverImage.image = UIImage(named: "PrideAndPrejudice")
+            coverImage.image = currBook.getImage()
             pagesReadLabel.text = String(currBook.pagesRead)
             totalPagesLabel.text = String(currBook.maxPages)
         }
@@ -62,10 +62,8 @@ class DetailViewController: UIViewController, NoteDelegate  {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        print("GOT HERE")
 
         try! realm.write(){
-            print("Changed pages")
             book?.pagesRead = Int(progressSlider.value)
         }
     }
